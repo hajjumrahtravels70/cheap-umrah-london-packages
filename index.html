@@ -1,0 +1,610 @@
+
+<div class="hug-guest-post">
+
+<style>
+.hug-guest-post {
+    --hug-green: #173e35;
+    --hug-green-light: #286653;
+    --hug-gold: #c49b5b;
+    --hug-text: #293632;
+    --hug-muted: #687770;
+    --hug-border: #e5ebe7;
+    --hug-soft: #f5f8f6;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--hug-text);
+    line-height: 1.8;
+    max-width: 1200px;
+    margin: 30px auto;
+}
+
+.hug-guest-post * {
+    box-sizing: border-box;
+}
+
+.hug-guest-post a {
+    color: var(--hug-green-light);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(40,102,83,.35);
+    transition: all .25s ease;
+}
+
+.hug-guest-post a:hover {
+    color: var(--hug-gold);
+    border-color: var(--hug-gold);
+}
+
+.hug-hero {
+    background: linear-gradient(130deg, #15372f, #245b49);
+    padding: 55px 48px;
+    border-radius: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hug-hero:after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50%;
+    right: -70px;
+    bottom: -120px;
+    box-shadow: 0 0 0 25px rgba(255,255,255,.035),
+                0 0 0 50px rgba(255,255,255,.025);
+}
+
+.hug-eyebrow {
+    display: inline-block;
+    color: #e2c48f;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.hug-hero h1 {
+    color: #fff;
+    font-size: clamp(27px, 4vw, 40px);
+    line-height: 1.25;
+    max-width: 850px;
+    margin: 0 0 18px;
+    font-weight: 700;
+}
+
+.hug-hero p {
+    color: #e3eee9;
+    max-width: 780px;
+    font-size: 16px;
+    margin: 0;
+}
+
+.hug-layout {
+    display: grid;
+    grid-template-columns: 255px minmax(0, 1fr);
+    gap: 28px;
+    align-items: start;
+}
+
+.hug-sidebar {
+    position: sticky;
+    top: 25px;
+}
+
+.hug-toc {
+    background: #fff;
+    border: 1px solid var(--hug-border);
+    border-radius: 13px;
+    padding: 22px 17px;
+    box-shadow: 0 8px 30px rgba(20,50,38,.055);
+}
+
+.hug-toc-heading {
+    color: var(--hug-green);
+    font-size: 16px;
+    font-weight: 700;
+    padding: 0 8px 15px;
+    margin: 0 0 10px;
+    border-bottom: 2px solid var(--hug-border);
+}
+
+.hug-toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: hug-counter;
+}
+
+.hug-toc li {
+    counter-increment: hug-counter;
+    margin: 3px 0;
+}
+
+.hug-toc li a {
+    display: block;
+    color: #52635b;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 9px;
+    border: none;
+    border-radius: 6px;
+    line-height: 1.5;
+}
+
+.hug-toc li a:before {
+    content: counter(hug-counter, decimal-leading-zero);
+    color: var(--hug-gold);
+    font-size: 11px;
+    font-weight: 700;
+    margin-right: 9px;
+}
+
+.hug-toc li a:hover {
+    background: var(--hug-soft);
+    color: var(--hug-green);
+    padding-left: 13px;
+}
+
+.hug-article {
+    background: #fff;
+    border: 1px solid var(--hug-border);
+    border-radius: 13px;
+    padding: 38px 40px;
+    min-width: 0;
+    box-shadow: 0 8px 30px rgba(20,50,38,.035);
+}
+
+.hug-article .hug-intro {
+    font-size: 17px;
+    color: #40534a;
+    line-height: 1.85;
+    margin-top: 0;
+}
+
+.hug-article section {
+    margin-top: 37px;
+    padding-top: 27px;
+    border-top: 1px solid var(--hug-border);
+    scroll-margin-top: 30px;
+}
+
+.hug-article section:first-of-type {
+    margin-top: 25px;
+}
+
+.hug-article h2 {
+    color: var(--hug-green);
+    font-size: 23px;
+    line-height: 1.4;
+    margin: 0 0 16px;
+    font-weight: 700;
+}
+
+.hug-article p {
+    font-size: 15px;
+    margin: 0 0 15px;
+    color: var(--hug-text);
+}
+
+.hug-article ul {
+    padding-left: 23px;
+    margin: 12px 0 20px;
+}
+
+.hug-article ul li {
+    font-size: 15px;
+    padding-left: 5px;
+    margin-bottom: 9px;
+}
+
+.hug-article ul li::marker {
+    color: var(--hug-gold);
+}
+
+.hug-note {
+    background: var(--hug-soft);
+    border-left: 4px solid var(--hug-gold);
+    padding: 19px 21px;
+    margin: 22px 0;
+    border-radius: 0 9px 9px 0;
+}
+
+.hug-note p {
+    margin-bottom: 0;
+}
+
+.hug-final {
+    background: #edf4ef;
+    padding: 25px;
+    margin-top: 35px;
+    border-radius: 10px;
+    border: 1px solid #dce9df;
+}
+
+.hug-final h2 {
+    margin-bottom: 12px;
+}
+
+@media (max-width: 900px) {
+    .hug-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hug-sidebar {
+        position: static;
+    }
+
+    .hug-toc ol {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 10px;
+    }
+
+    .hug-article {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hug-guest-post {
+        margin: 15px auto;
+    }
+
+    .hug-hero {
+        padding: 35px 23px;
+        border-radius: 10px;
+    }
+
+    .hug-toc {
+        padding: 18px 12px;
+    }
+
+    .hug-toc ol {
+        grid-template-columns: 1fr;
+    }
+
+    .hug-article {
+        padding: 23px 19px;
+    }
+
+    .hug-article h2 {
+        font-size: 20px;
+    }
+
+    .hug-article p,
+    .hug-article ul li {
+        font-size: 14px;
+    }
+}
+</style>
+
+<!-- ARTICLE HEADER -->
+
+<header class="hug-hero">
+    <span class="hug-eyebrow">UMRAH TRAVEL GUIDE</span>
+    <h1>Planning Umrah from London: How to Choose the Right Package and Prepare for Your Journey</h1>
+    <p>A practical guide to choosing flights, accommodation and travel arrangements for a comfortable pilgrimage from London.</p>
+</header>
+
+<div class="hug-layout">
+
+    <!-- LEFT SIDE TABLE OF CONTENTS -->
+
+    <aside class="hug-sidebar">
+        <nav class="hug-toc" aria-label="Table of Contents">
+            <h2 class="hug-toc-heading">Table of Contents</h2>
+            <ol>
+                <li><a href="#hug-intro">Introduction</a></li>
+                <li><a href="#hug-london">Planning Umrah from London</a></li>
+                <li><a href="#hug-budget">Finding the Right Package</a></li>
+                <li><a href="#hug-airports">Flights and Departure Airports</a></li>
+                <li><a href="#hug-included">What Should Be Included?</a></li>
+                <li><a href="#hug-duration">Choosing Your Stay</a></li>
+                <li><a href="#hug-hotels">Hotel Location Matters</a></li>
+                <li><a href="#hug-cost">Managing Your Budget</a></li>
+                <li><a href="#hug-documents">Travel Documents</a></li>
+                <li><a href="#hug-family">Travelling with Family</a></li>
+                <li><a href="#hug-agent">Choosing a Travel Agency</a></li>
+                <li><a href="#hug-checklist">Final Travel Checklist</a></li>
+            </ol>
+        </nav>
+    </aside>
+
+    <!-- RIGHT SIDE ARTICLE -->
+
+    <main class="hug-article">
+
+        <section id="hug-intro" style="margin-top:0;padding-top:0;border-top:0;">
+
+            <p class="hug-intro">
+                Planning an Umrah journey from London requires more than choosing a departure date. You also need to consider your budget, hotel location, flights and travel arrangements. Comparing <a href="https://hajjumrahtravels.co.uk/cheap-umrah-packages/">affordable UK Umrah packages</a> can help you understand the available options before making a booking.
+            </p>
+
+            <p>
+                Every pilgrim has different needs. Some people prefer a short trip, while others want more time in Makkah and Madinah. Families may need larger rooms and convenient flights. First-time pilgrims may also want additional guidance before travelling.
+            </p>
+
+            <p>
+                A clear plan can make the whole experience easier. The following points will help you prepare for your journey and make a more informed travel decision.
+            </p>
+
+        </section>
+
+        <section id="hug-london">
+
+            <h2>1. Why Plan Your Umrah Journey from London Early?</h2>
+
+            <p>
+                London offers several travel options for pilgrims heading to Saudi Arabia. However, flight availability, departure dates and hotel prices can vary throughout the year. Starting your search early gives you more time to compare different arrangements.
+            </p>
+
+            <p>
+                You can start by exploring <a href="https://hajjumrahtravels.co.uk/umrah-packages-london/">Umrah packages from London</a> and checking which itineraries match your preferred travel dates. Look at the complete package rather than focusing only on the advertised price.
+            </p>
+
+            <p>
+                Also think about how you will reach the departure airport. If you live outside London, consider train fares, parking costs and the time needed to reach the terminal. Arriving with enough time can make the start of your journey less stressful.
+            </p>
+
+            <p>
+                Popular school holiday periods can have higher demand. Therefore, avoid leaving your booking until the last minute, particularly when travelling with a group.
+            </p>
+
+        </section>
+
+        <section id="hug-budget">
+
+            <h2>2. How to Find the Right Umrah Package for Your Budget</h2>
+
+            <p>
+                The cheapest package is not always the most suitable. A good deal should offer the services you actually need at a price you can comfortably afford.
+            </p>
+
+            <p>
+                Compare the hotel standard, flight arrangements, length of stay and transport services. Two packages may have similar prices but offer very different accommodation and travel arrangements.
+            </p>
+
+            <p>
+                It is also useful to compare different hotel categories. Three-star accommodation may suit pilgrims who want to keep costs down. Four-star and five-star options may offer additional facilities and different hotel locations.
+            </p>
+
+            <p>
+                For a wider look at available choices, <a href="https://hajjumrahtravels.co.uk/">Hajj Umrah Travels</a> is one place to review when comparing travel arrangements for UK pilgrims. Check the details of each option and ask questions about anything that is unclear.
+            </p>
+
+            <div class="hug-note">
+                <p><strong>Useful tip:</strong> Always compare packages for the same travel dates and room occupancy. This gives you a fairer idea of which option offers better value.</p>
+            </div>
+
+        </section>
+
+        <section id="hug-airports">
+
+            <h2>3. Compare Flights and Departure Arrangements</h2>
+
+            <p>
+                Your flight is an important part of the overall travel experience. Check whether your chosen package includes return flights and whether the flight is confirmed or subject to availability.
+            </p>
+
+            <p>
+                Look at the total journey time, stopovers, baggage allowance and arrival airport. A direct flight may save time, while a connecting flight may offer a different price. Consider what works best for your circumstances.
+            </p>
+
+            <p>
+                Also check whether you will arrive in Jeddah or Madinah. Your arrival airport can affect the transfer arrangements and the order of your stay.
+            </p>
+
+            <p>
+                Before paying, request the latest flight information in writing. Do not assume that every package includes the same airline or departure time.
+            </p>
+
+        </section>
+
+        <section id="hug-included">
+
+            <h2>4. What Should an Umrah Package Include?</h2>
+
+            <p>
+                Understanding the package details can help prevent unexpected expenses. Before confirming your booking, ask the travel company for a clear breakdown of its services.
+            </p>
+
+            <p>Depending on the package, important arrangements may include:</p>
+
+            <ul>
+                <li>Return flights from the UK, where included.</li>
+                <li>Hotel accommodation in Makkah and Madinah.</li>
+                <li>Room sharing and occupancy details.</li>
+                <li>Visa assistance or relevant entry guidance.</li>
+                <li>Airport transfers and intercity transport.</li>
+                <li>Meal arrangements, where included.</li>
+                <li>Customer support during the booking process.</li>
+            </ul>
+
+            <p>
+                Ask whether any services are optional and whether additional charges apply. For example, private transfers and certain hotel facilities may cost extra.
+            </p>
+
+        </section>
+
+        <section id="hug-duration">
+
+            <h2>5. How Many Nights Should You Spend in Makkah and Madinah?</h2>
+
+            <p>
+                Your length of stay depends on your available time, budget and personal preferences. A short trip may suit people with limited annual leave, while a longer stay gives you more flexibility.
+            </p>
+
+            <p>
+                Seven nights can be suitable for people who want a shorter pilgrimage. Ten nights provide additional time to settle in and visit both holy cities. Fourteen nights may be more comfortable for first-time pilgrims and families who prefer a slower schedule.
+            </p>
+
+            <p>
+                Check the division of nights between Makkah and Madinah. Some itineraries include more nights in Makkah, while others provide an equal split.
+            </p>
+
+            <p>
+                Think about your priorities before booking. If spending more time near Masjid al-Haram is important to you, choose an itinerary that reflects this preference.
+            </p>
+
+        </section>
+
+        <section id="hug-hotels">
+
+            <h2>6. Why Hotel Location Matters During Umrah</h2>
+
+            <p>
+                Hotel location can have a major impact on your daily routine. A property near the holy mosque may make it easier to attend prayers without spending too much time travelling.
+            </p>
+
+            <p>
+                In Makkah, check the distance from Masjid al-Haram and consider the walking route. In Madinah, look at the hotel's distance from Masjid an-Nabawi.
+            </p>
+
+            <p>
+                Do not depend only on the star rating. A well-located three-star hotel may be more practical for some travellers than a higher-rated property that is further away.
+            </p>
+
+            <p>
+                Ask for the confirmed hotel name, room type and available facilities. If you are travelling with older relatives, check lift access and the walking distance to nearby services.
+            </p>
+
+        </section>
+
+        <section id="hug-cost">
+
+            <h2>7. How to Manage the Total Cost of Your Umrah Trip</h2>
+
+            <p>
+                Your travel budget should cover more than the advertised package price. Keep some money aside for meals, shopping, local transport and personal expenses.
+            </p>
+
+            <p>
+                Check the payment schedule before confirming your booking. Understand the deposit amount, final payment deadline and any amendment or cancellation charges.
+            </p>
+
+            <p>
+                Travelling outside the busiest periods may provide more choice. You can also compare room-sharing options to understand how occupancy affects the final price.
+            </p>
+
+            <p>
+                Avoid making a decision based on a very low advertised price without checking what is included. A clear price breakdown makes it easier to plan and manage your spending.
+            </p>
+
+        </section>
+
+        <section id="hug-documents">
+
+            <h2>8. Prepare Your Travel Documents in Advance</h2>
+
+            <p>
+                Check your passport expiry date well before departure. Make sure your booking details and personal information are correct.
+            </p>
+
+            <p>
+                Saudi entry requirements can change, so check the latest official guidance for your nationality and travel circumstances. Ask your travel company which documents are required and whether any additional steps apply.
+            </p>
+
+            <p>
+                Keep digital and printed copies of your passport details, flight confirmation, hotel booking and emergency contacts.
+            </p>
+
+            <p>
+                Travel insurance is also worth considering. Read the policy carefully and check its cover for medical emergencies, cancellation and travel disruption.
+            </p>
+
+        </section>
+
+        <section id="hug-family">
+
+            <h2>9. Important Tips for Families and Older Pilgrims</h2>
+
+            <p>
+                Travelling with children or older relatives requires extra preparation. Think about comfort during flights, airport transfers and daily visits to the holy mosques.
+            </p>
+
+            <p>
+                Choose suitable flight times where possible. Check whether the hotel offers appropriate room arrangements and whether assistance is available for passengers with reduced mobility.
+            </p>
+
+            <p>
+                Pack essential medicines in your hand luggage. Comfortable footwear and suitable clothing are also important for a journey that involves considerable walking.
+            </p>
+
+            <p>
+                Agree on a meeting point in busy places and save the hotel's contact details on everyone's phone. Small preparations can make travelling as a group much easier.
+            </p>
+
+        </section>
+
+        <section id="hug-agent">
+
+            <h2>10. How to Choose a Reliable Umrah Travel Agency</h2>
+
+            <p>
+                Choosing a travel company is just as important as choosing flights and hotels. Look for clear communication, written booking details and a proper explanation of the services included.
+            </p>
+
+            <p>
+                Read customer reviews and check the company's contact information. Ask how it handles flight changes, hotel substitutions and other travel problems.
+            </p>
+
+            <p>
+                For UK flight-inclusive bookings, check whether ATOL protection applies. Where applicable, request an ATOL Certificate and make sure the services you have booked are listed.
+            </p>
+
+            <p>
+                Take time to understand the booking conditions before making a payment. A trustworthy travel provider should answer reasonable questions and give you clear information.
+            </p>
+
+        </section>
+
+        <section id="hug-checklist">
+
+            <h2>11. Your Final Umrah Travel Checklist</h2>
+
+            <p>
+                Before leaving the UK, review your arrangements and make sure you have everything ready.
+            </p>
+
+            <ul>
+                <li>Confirm your flight dates and baggage allowance.</li>
+                <li>Check your hotel bookings in both cities.</li>
+                <li>Prepare your passport and required documents.</li>
+                <li>Understand your airport transfer arrangements.</li>
+                <li>Arrange travel insurance if needed.</li>
+                <li>Pack Ihram clothing and comfortable footwear.</li>
+                <li>Save emergency contact details.</li>
+                <li>Review the basic steps of Umrah before departure.</li>
+            </ul>
+
+            <p>
+                Having this information ready can reduce last-minute stress and help you begin your pilgrimage with confidence.
+            </p>
+
+        </section>
+
+        <div class="hug-final">
+
+            <h2>Final Thoughts</h2>
+
+            <p>
+                Planning Umrah from London becomes easier when you understand your options and prepare in advance. Compare flights, hotel locations, travel dates and package inclusions before making your decision.
+            </p>
+
+            <p>
+                The right package is not necessarily the most expensive or the cheapest. It is the one that suits your budget, travel needs and personal circumstances.
+            </p>
+
+            <p>
+                Give yourself enough time to organise the practical arrangements. This will allow you to focus more on worship and make the most of your time in Makkah and Madinah.
+            </p>
+
+        </div>
+
+    </main>
+</div>
+</div>
